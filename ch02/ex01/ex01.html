@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Practice</title>
+    <link rel="stylesheet" href="./ex01.css">
+</head>
+<body>
+    <!-- 0. 간단히 페이지 만들어서 css 적용해보기 -->
+    <h1>First Practice!! Hello React!!</h1>
+
+    <!-- 1. DOM Container (= Root DOM Node) 추가 ==> virtual DOM의 시작점(뿌리) -->
+    <div id="root"></div>
+
+    <!-- 2. script 태그 사용해 리액트 자바스크립트 파일 가져오기 -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+
+    <!-- 3. 앞으로 만들게 될 리액트 컴포넌트 가져오는 코드 미리 넣어주기 -->
+    <script src="./MyButton.js"></script>
+
+    <!-- 이렇게 매번 환경설정하기엔 과정이 복잡 ==> 리액트 프로젝트 자동생성 create-react-app 패키지가 있다!!! -->
+    <!-- 터미널에 ==> npx create-react-app 파일명 ==> 실행!! -->
+    <!-- cd로 디렉토리 접근, npm start 로 실행 -->
+</body>
+</html>

@@ -28,12 +28,29 @@
         ** Element의 생김새
         - 리액트 엘리먼트는 자바스크립트 객체 형태로 존재
         - 컴포넌트 유형(ex. Button), 속성(ex. color), 및 내부의 모든 자식(children)에 대한 정보 포함하는 일반적 자바스크립트 객체
-        - 객체를 만드는 역할을 하는 함소 => createElement()
+        - 객체를 만드는 역할을 하는 함수 => createElement()
             => React.createElement(
                 type,    <==== 리액트 컴포넌트가 들어가거나 문자열로 HTML 태그가 들어감
-                [props],
-                [...children]
+                [props],    <==== 속성 (좀더 상위의 개념, 뒷 챕터에서 상세히 다룸)
+                [...children]     <==== 해당 엘리먼트의 자식 엘리먼트들
             )
+        
+        ** Element의 특징
+        => 불변성
+            - 생성 후에는 children이나 attributes를 바꿀 수 없다
+            - 엘리먼트는 다양한 모습으로 존재할 수 있지만 한 번 생성된 다음에는 변경이 불가능하다!!!
+            - 화면에 변경된 엘리먼트를 보여주기 위해서는 새로운 엘리먼트를 만들어서 기존 엘리먼트와 바꿔줘야함!!!
+            - 상태관리와 더불어 화면 갱신 횟수는 성능에 큰 영향을 미치는 요소
+
+        ** Element Rendering
+        - 엘리먼트 생성 후 화면에 보여주기 위해서는 렌더링 과정 필수
+        - <div id="root"></div>
+            => Root DOM node : div 태그안에 리액트 엘리먼트들이 렌더링 / 리액트로만 만들어진 사이트에서는 단 하나의 루트 노드 가짐
+        - root <div>에 리엑트 엘리먼트 렌더링하기
+            => const root = ReactDOM.createRoot(document.getElementById('root'));
+               root.render(React 엘리먼트);
+
+        
 
 
 

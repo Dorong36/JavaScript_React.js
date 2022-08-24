@@ -18,12 +18,18 @@ import ProfileCard from './chapter_13/ProfileCard';
 import DarkOrLight from './chapter_14/DarkOrLight';
 import Blocks from './chapter_15/Blocks';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Blocks />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <Blocks />
+//   </React.StrictMode>,
+//   document.getElementById('root')
+// );
+
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <NotificationList />
+)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

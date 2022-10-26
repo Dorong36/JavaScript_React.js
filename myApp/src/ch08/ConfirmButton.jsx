@@ -14,18 +14,18 @@ import React, {useState} from "react";
 //     }
 
 //     // solution1
-//     // handleConfirm() {
-//     //     this.setState((prevState) => ({
-//     //         isConfirmed : !prevState.isConfirmed,
-//     //     }));
-//     // }
+    // handleConfirm() {
+    //     this.setState((prevState) => ({
+    //         isConfirmed : !prevState.isConfirmed,
+    //     }));
+    // }
 
-//     // solution2 : 클래스 필드 문법 사용하기
-//     handleConfirm = () => {
-//         this.setState((prevState) => ({
-//             isConfirmed: !prevState.isConfirmed,
-//         }));
-//     }
+    // solution2 : 클래스 필드 문법 사용하기
+    // handleConfirm = () => {
+    //     this.setState((prevState) => ({
+    //         isConfirmed: !prevState.isConfirmed,
+    //     }));
+    // }
 
 
 

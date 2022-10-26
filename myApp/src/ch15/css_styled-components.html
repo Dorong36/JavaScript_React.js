@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        🌟🌟🌟 CSS 🌟🌟🌟
+        ** 기본 문법과 선택자
+        - h1{color : green; font-size : 16px;}
+        - id => #    class => .   전체 => *    여러개 동시에 적용 => ,로 여러 태그 구분
+        - 엘리먼트 상태 관련 선택자
+            => :hover   :active   :focus   :checked   :first(last)-child
+        - 레이아웃
+            a. display
+                => display : none || block || inline || flex
+            b. visibility
+                => visibility : visible || hidden
+            c. position
+                => position : static || fixed || relative || absolute
+        - 플렉스박스
+            => display : flex 사용시 플렉스박스의 컨테이너가 됨, 내부 여러개 엘리먼트 포함
+            a. flex-direction
+                => flex-direction : row || column || row-reverse || column-reverse
+            b. align-items (cross-axis 기준)
+                => align-items : stretch || flex-start || center || flex-end || baseline
+            c. justify-content (main-axis 기준)
+                => justify-content : flex-start || conter || flex-end || space-between || space-around
+
+        
+        ** styled-components
+        - npm install --save styled-components
+        - import styled from 'styled-components';
+        - 태그드 템플릿 리터럴을 사용하여 구성 요소의 스타일 지정    +) 리터럴 : 소스코드 상에 있는 고정된 값
+            => 태그드 템플릿 리터럴은 앞에 나와있는 태그 함수를 호출하여 결과를 리턴
+            => 태그함수의 파라미터는 expression으로 구분된 문자열 배열과 expression이 순서대로 들어감
+        - styled-components는 태그드 템플릿 리터럴을 사용하여 css 속성이 적용된 리액트 컴포넌트로 만들어 줌
+            => const Wrapper = styled.div`padding: 1em; background: grey;`
+            => <Wrapper> hello world </Wrapper>
+        - styled-components의 props 사용하기
+            => props 활용 => 조건이나 동적으로 변하는 값으로 스타일링
+            => const Button = styled.button`color: ${props => props.dark? black : white};`
+            => <Button dark> hello </Button>
+        - styled-components 확장하기
+            => 생성된 컴포넌트 기반 추가적 스타일 적용하고 싶을 경우
+            => const RoundedButton = styled(Button)`border-radius: 16px;`
+            => <RoundedButton> hello round </ RoundedButton>
+        
+
+
+            
+     -->
+</body>
+</html>

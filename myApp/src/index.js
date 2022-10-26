@@ -10,10 +10,17 @@ import CommentList from './ch05/CommentList';
 import NotificationList from './ch06/NotificationList';
 import Accommodate from './ch07/Accommodate';
 import ConfirmButton from './ch08/ConfirmButton';
+import LandingPage from './ch09/LandingPage';
+import AttendanceBook from './ch10/AttendanceBook';
+import SignUp from './ch11/SignUp';
+import Calculator from './ch12/Calculator';
+import ProfileCard from './ch13/ProfileCard';
+import DarkOrLight from './ch14/DarkOrLight';
+import Blocks from './ch15/Blocks';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-// ch03 예제
+//ch03
 // root.render(
 //   <React.StrictMode>
 //     {/* App ==> Library 수정 */}
@@ -21,7 +28,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 //   </React.StrictMode>
 // );
 
-// ch04 예제
+// ch04
 // setInterval(()=>{
 //   root.render(
 //     <React.StrictMode>
@@ -46,21 +53,24 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 //     <NotificationList />
 // )
 
-//ch07
-// root.render(
-//     <React.StrictMode>
-//         <Accommodate />
-//     </ React.StrictMode>
-    
-// )
-
-//ch08
+//ch07 ~
 root.render(
     <React.StrictMode>
-        <ConfirmButton />
+      {
+        // <Accommodate />
+        // <ConfirmButton />
+        // <LandingPage />
+        // <AttendanceBook /> 
+        // <SignUp />
+        // <Calculator />
+        // <ProfileCard />
+        // <DarkOrLight />
+         <Blocks />
+      }
     </ React.StrictMode>
-    
 )
+
+
 
 
 

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        🌟🌟🌟 폼 🌟🌟🌟
+        ** 개요
+        - 폼이란? 사용자로부터 입력을 받기 위해 사용하는 것
+        - 기본 HTML 폼과는 달리 리액트에서 폼은 컴포넌트 내부에서 state를 통해 데이터를 관리
+            => 사용자 입력값에 접근과 제어가 용이
+
+        ** 제어 컴포넌트
+        - 값이 리액트의 통제를 받는 입력 폼 엘리먼트
+        - HTML 폼은 각 엘리먼트 자체적으로 state 관리 => 제어컴포넌트는 모든 데이터를 state에서 관리
+        - 사용예시 캡처본 참고
+
+        - 입력값이 state를 통해 관리 => 여러 개의 입력 양식 값을 원하는 대로 조종 가능
+            => 초깃값 넣기, 다른 양식의 값 변경되면 또 다른 양식 값 자동으로 변경 등도 가능
+
+        ** textarea 태그
+        - 여러 줄에 걸쳐 나올 정도로 긴 텍스트
+        - textarea 태그에 속성으로 value 사용하여 텍스트 표시
+
+        ** select 태그
+        - 드롭다운 목록을 보여주기 위한 태그 => 여러 옵션 중 하나를 선택
+        - 여러개의 <option>태그를 <select>태그가 감싸는 형태
+        - <option>태그에 value라는 속성을 사용하여 값을 표시
+        - 다중선택을 허용하려면 select 속성으로 multiple={true} 입력, value로 선택된 옵션의 값 들어간 배열 넣어줌
+
+        ** File input 태그
+        - 여러 개의 파일을 선택, 업로드에 사용
+        - input 태그에서 type를 "file"로 설정
+        - 읽기 전용, 비제어 컴포넌트
+    
+        ** 여러 개의 입력 다루기
+        - 여러 개의 state를 선언하여 각각의 입력에 사용
+
+        ** input Null value
+        - 제어 컴포넌트에 value prop을 정해진 값으로 넣으면 코드 수정하지 않는 한 입력값 바꿀 수 없음
+            => 만약 value prop을 넣되 자유롭게 입력할 수 있게 하고자 하면 undefined or null을 넣어 주면 됨
+
+
+
+
+
+
+     -->
+</body>
+</html>

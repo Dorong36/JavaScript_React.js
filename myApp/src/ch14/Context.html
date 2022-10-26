@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        🌟🌟🌟 컨텍스트 (Context) 🌟🌟🌟
+        ** 개요
+        - 일반적인 리액트 애플리케이션에서는 데이터가 props를 통해 부모에서 자식으로 단방향 전달
+        - 여러 컴포넌트에서 자주 사용되는 데이터에서 기존 방식은 코드가 복잡해지고 불편함이 많아짐
+        - 만약 Root node의 데이터가 10단계 밑의 노드로 데이터를 전달하려면 10번 props를 거쳐야함
+            => Context를 사용하면 데이터를 필요로 하는 컴포넌트에 곧바로 데이터 전달 가능
+
+
+        ** 일반적 Context 사용시기
+        - 여러 개의 컴포넌트들이 접근해야 하는 데이터
+            => 사용자 로그인 여부, 로그인 정보, UI 테마, 현재 선택된 언어 등
+        
+
+        ** Context 사용하기
+        1. 생성
+            const ThemeContext = React.createContext('light(기본값)')
+
+        2. 값 넣어주기
+        - Provider를 사용하여 하위 컴포넌트들에게 현재 테마 데이터를 전달
+        - 모든 하위 컴포넌트들은 깊이에 관계없이 데이터를 읽을 수 있음
+            return(
+                <ThemeContext.Provider value = "dark">
+                    <Toolbar />
+                </ ThemeContext.Provider>
+            );
+
+        3. 값 사용하기
+        - 가장 가까운 상위 테마 Provider를 찾아서 값 사용
+        - 만약 해당되는 Provider가 없다면 기본값 사용
+            return(
+                <ThemeContext.Consumer>
+                    {value => <Button theme = {value} />}
+                </ ThemeContext.Consumer>
+            );
+
+        
+        ** 사용시 고려사항
+        - 컴포넌트와 컨텍스트가 연동되면 재사용성이 떨어짐
+        - 다른 레벨의 많은 컴포넌트가 데이터를 필요로 하는 경우가 아니라면
+          기존에 사용하던 방식대로 props를 통해 데이터를 전달하는 합성 방법이 더 적합
+        - 추가적 방법
+            a. 최상위 노드의 값이 최하위 노드로 전달되어야 할 경우
+                => 최하위 노드 컴포넌트를 엘리먼트 변수(9장 참조) 형태로 직접 차례로 아래에 넘겨주는 방법
+            b. a 방식은 데이터가 많아질 수록 상위 컴포넌트에 코드가 몰려 복잡해지고 하위 컴포넌트는 너무 유연해짐
+                => 응용해서 하위 컴포넌트를 여러 개의 변수로 나눠서 전달
+                => 하위 컴포넌트의 의존성을 상위 컴포넌트와 분리할 필요가 있는 대부분의 경우에 적합한 방식
+                => 렌더링 전 하위 컴포넌트가 상위 컴포넌트와 통신해야 하는 경우에는 props 활용
+        - 하나의 데이터에 다양한 레벨에 있는 중첩된 컴포넌트들의 접근이 필요한 경우에는 위 방법은 불가하고 결국 컨텍스트 사용해야함
+            => Context는 해당 데이터와 변경사항을 모든 하위 컴포넌트에 Broadcast(널리 알림)해주기 때문
+
+        
+        ** Context API
+        - 컨텍스트 생성
+            => const MyContext = React.createContext(기본값);
+        - 컨텍스트 넣어주기
+            => <MyContext.Provider value = {대입값}> <consumer 컴포넌트> </ MyContext.Provider>
+                => 하나의 Provider 컴포넌트는 여러 개의 consumer 컴포넌트와 연결될 수 있음
+                => 여러 개의 Provider 컴포넌트 중첩사용 가능
+                => Provider 데이터 사용 consumer 컴포넌트는 Provider의 value가 바뀔 때마다 재렌더링
+            => 부모 컴포넌트 재렌더링시 consumer 컴포넌트가 의도치 않게 계속 재렌더링 될 수 있음
+                => value를 직접 넣는게 아니라 state로 선언해두고 state를 value로 넘겨줘 해결
+        - 클래스 컴포넌트 컨텍스트 사용하기
+            => Provider 하위 클래스 컴포넌트에서 컨텍스트의 데이터에 접근하기 위해 사용 (class 컴포넌트 사용 줄면서 같이 사용 줌)
+            => class MyClass extends React.Component{ let value = this.context; };
+            => MyClass.contextType = MyContext;    (생성방법은 동일)
+            => 이 API는 단 하나의 context만 구독 가능
+        - 컨텍스트 구독하기
+            => <MyContext.Consumer> {value => 컨텍스트 값에 따라 컴포넌트 렌더링} </ MyContext.Consumer>
+                => 컴포넌트 자식으로 함수가 오면 value를 받아서 리액트 노드로 리턴
+                => 상위 컴포넌트에 Provider가 없다면 value 파라미터는 createContext()의 기본값으로 들어감
+        - 개발자 도구 표시
+            => MyContext.displayName = 'MyContextName';
+            => 크롬 리액트 개발자 도구에서 컨텍스트의 Provider나 Consumer를 표시할 때 displayName 함께 표시
+
+
+        ** 여러 개의 컨텍스트 사용하기 (클래스 컴포넌트에서)
+        - Context.Provider를 중첩해서 사용하는 방식으로 구현
+        - 사용시에도 Context.Consumer를 중첩해서 사용
+        - but 두 개 이상의 컨텍스트 값 자주 함께 사용할 경우 동시에 제공하는 별도의 render prop 컴포넌트 만들기 고려
+
+
+        ** useContext
+        - 함수 컴포넌트에서 매번 Consumer 컴포넌트로 감싸주는 것보다 더 나은 방법 => Hook!!
+        - useConext 훅 => createContext로 생성된 컨텍스트 객체 인자로 받아서 현재 컨텍스트 값 리턴
+        -  const value = useContext(Mycontext)
+            => 컴포넌트 트리상에서 가장 가까운 상위 Provider로부터 컨텍스트 값 받아옴
+            => 컨텍스트 값 변경시 useContext 훅 사용 컴포넌트 재렌더링
+                => 렌더링이 무거운 작업일 경우 별도의 최적화 필요
+        - 🌟 파라미터로 꼭 컨텍스트 객체를 넣어줘야함!! 🌟
+
+
+              
+
+     -->
+</body>
+</html>
